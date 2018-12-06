@@ -1,0 +1,24 @@
+{
+  "name": "reti-di-calcolatori",
+  "version": "1.0.0",
+  "description": "Progetto Reti di Calcolatori",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/perottofederico/Reti-di-Calcolatori.git"
+  },
+  "author": "Federico Perotto",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/perottofederico/Reti-di-Calcolatori/issues"
+  },
+  "homepage": "https://github.com/perottofederico/Reti-di-Calcolatori#readme",
+  "dependencies": {
+    "express": "^4.16.4",
+    "morgan": "^1.9.1",
+    "path": "^0.12.7"
+  }
+}
