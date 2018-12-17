@@ -13,27 +13,31 @@ const errorHandler = require('errorhandler'); //Error handler for development en
 //const mongoose = require('mongoose'); MongoDB. Maybe will use couchDB
 const morgan = require('morgan'); //HTTP request logger middleware
 var routes = require('./routes');
-
 const port = process.env.PORT || 3000; //Server port
 
-
-
 //creating global app object
-var app = express();
+const app = express();
 
 //Express config defaults
+app.use(express.static(__dirname+'/public')); //Load static files in public folder
+require('./config/passport')(passport);
 //app.use(cors());
 app.use(morgan('dev'));
 app.use(bodyParser.urlencoded({extended:true}));
 app.use(bodyParser.json());		//To get content of forms
 
 app.set('view engine', 'ejs');
-app.use('/', routes);
+app.set('views', './views');
 
+app.use(session({secret : 'wbfierfiewrfo',
+				resave : true,
+				saveUninitialized : true}));
+app.use(passport.initialize());
+app.use(passport.session());
 
+//app.use('/', routes);
 //app.use(require('method-override')());
-app.use(express.static(__dirname+'/public')); //Load static files in public folder
-
+require('./routes/index')(app, passport);
 
 
 

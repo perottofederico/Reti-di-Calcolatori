@@ -29,6 +29,7 @@
     "methods": "^1.1.2",
     "morgan": "^1.9.1",
     "passport": "^0.4.0",
+    "passport-google-oauth": "^1.0.0",
     "path": "^0.12.7",
     "request": "^2.88.0",
     "save": "^2.3.3"
