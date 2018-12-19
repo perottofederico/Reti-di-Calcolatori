@@ -1,9 +1,7 @@
-module.exports = function(app, passport){
+module.exports = function(app, passport){ //Wrapping to run logic when it is called
 var express = require('express');
-	//var router = express.Router();
 	var path= require('path');
 	var request = require('request');
-	//var passport= require('passport');
 
 	app.use(function timeLog(req, res, next){
 		console.log('Time: ', Date.now());
@@ -51,12 +49,12 @@ var express = require('express');
 
 	//GOOGLE SIGNIN
 	app.get('/auth/google', passport.authenticate('google',{
-			scope:['https://www.googleapis.com/auth/userinfo.email']
+			scope:['email']
 	}));
 
 	app.get('auth/google/callback', passport.authenticate('google', {
 		successRedirect : '/',
 		failureRedirect : '/login'
 	}));
-//module.exports = router;
+
 }
