@@ -1,5 +1,5 @@
 module.exports = function(app, passport){ //Wrapping to run logic when it is called
-var express = require('express');
+	//var express = require('express');
 	var path= require('path');
 	var request = require('request');
 
@@ -19,11 +19,11 @@ var express = require('express');
 
 
 	var film; //Variable including movie info
-	app.get('/search', function(req, res){
+	app.get('/search', isLoggedIn, function(req, res){
 		res.render(path.resolve(__dirname+'/../views/search.ejs'));
 	});
 
-	app.post('/search', function(req, res){
+	app.post('/search', isLoggedIn, function(req, res){
 		var options = {url: 'http://www.omdbapi.com/?apikey=2fab0a6a&t='+ req.body.name};
 		request.get(options, function(error, response, body){
 			if(!error && response.statusCode == 200){
@@ -34,7 +34,7 @@ var express = require('express');
 		});
 	});
 
-	app.get('/film', function(req, res){
+	app.get('/film', isLoggedIn, function(req, res){
 		res.render(path.resolve(__dirname+'/../views/film.ejs'), {
 			title:film.Title,
 			poster:film.Poster
@@ -42,19 +42,31 @@ var express = require('express');
 	});
 
 
-	app.get('/visti', function(req, res){
+	app.get('/visti', isLoggedIn, function(req, res){
 		res.render(path.resolve(__dirname+'/../views/visti.ejs'));
 	});
 
 
-	//GOOGLE SIGNIN
-	app.get('/auth/google', passport.authenticate('google',{
-			scope:['email']
-	}));
+	app.get('/logout', function(req,res){
+		req.logout();
+		res.redirect('/');
+	});
 
-	app.get('auth/google/callback', passport.authenticate('google', {
+
+	//GOOGLE SIGNIN
+	app.get('/auth/google', passport.authenticate('google',{ scope : ['profile', 'email'] }));
+
+	app.get('/auth/google/callback', 
+		passport.authenticate('google', {
 		successRedirect : '/',
 		failureRedirect : '/login'
 	}));
+}
 
+function isLoggedIn(req, res, next){
+	//If user is logged in, go on
+	if (req.isAuthenticated())
+		return next();
+	//Else redirect to homepage
+	res.redirect('/');
 }
