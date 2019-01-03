@@ -1,62 +1,59 @@
 <!DOCTYPE html>
 <html>
-<head>
-	<title>ESAME</title>
-	<link rel="stylesheet" type="text/css" href="css/style.css">
-	<script type="text/javascript" src="js/main.js"></script>
-</head>
-<body>
-	<div class="container-menu">
-<h1>TITOLO PROGETTO</h1>
-<nav id="primary_nav_wrap">
-<ul>
-  <li class="current-menu-item"><a href="#">Home</a></li>
-  <li><a href="/search">Voce menu</a>
-    <ul>
-      <li><a href="#">Sub Menu 1</a></li>
-      <li><a href="#">Sub Menu 2</a></li>
-      <li><a href="#">Sub Menu 3</a></li>
-      <li><a href="#">Sub Menu 4</a></li>
-      <li><a href="#">Sub Menu 5</a></li>
-    </ul>
-  </li>
-   <li class=""><a href="/search">Altra voce menu</a></li>
-
-</ul>
-</nav>
-</div>
-	<div class="container">
-		<h2 class="text-center">Galleria Film</h2>
-		 <form class="lightbox-gallery" >
-          <input id="checkbox-1" class="checkbox-custom" name="checkbox-1" type="checkbox" checked>
-          <label for="checkbox-1" class="checkbox-custom-label">Film visti</label>
-    
-          <input id="checkbox-2" class="checkbox-custom" name="checkbox-2" type="checkbox">
-          <label for="checkbox-2" class="checkbox-custom-label">Film da vedere</label>
-      </form>
-		<div class="lightbox-gallery">
-				<div><img src="http://placehold.it/300/f1b702/fff&text=image1" data-image-hd="http://placehold.it/600/f1b702/fff&text=image1" alt="Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reprehenderit, quae, quam. Ut dolorum quia, unde dicta at harum porro officia obcaecati ipsam deserunt fugit dolore delectus quam, maxime nisi quo."></div>
-				<div><img src="http://placehold.it/300/d2f1b2/222&text=image2" data-image-hd="http://placehold.it/600/d2f1b2/222&text=image2" alt="Lorem ipsum dolor sit amet, consectetur adipisicing elit. Maxime accusamus officiis dignissimos doloribus consectetur harum eos sapiente optio aut minima."></div>
-				<div><img src="http://placehold.it/300/eee/000&text=image3" data-image-hd="http://placehold.it/600/eee/000&text=image3" alt="Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptates veritatis similique, amet, maiores soluta recusandae cupiditate, sed perspiciatis fugit minima, sunt dolores cum earum deserunt illo ipsum!"></div>
-				<div><img src="http://placehold.it/300/222/fff&text=image4" data-image-hd="http://placehold.it/600/222/fff&text=image4" alt="Lorem ipsum dolor sit amet, consectetur adipisicing elit. Itaque laudantium dignissimos tenetur eos unde quidem repellat officiis nemo laboriosam necessitatibus deleniti commodi quis aliquid est atque tempora aut, nihil!"></div>
-				<div><img src="http://placehold.it/300/b47f99/000&text=image5" data-image-hd="http://placehold.it/600/b47f99/000&text=image5" alt="Lorem ipsum dolor sit amet, consectetur adipisicing elit. Architecto minus consequatur soluta quaerat itaque, laboriosam quis a facilis, cumque, deleniti quas aperiam voluptate dolore. Enim nostrum sit eaque, porro eligendi illo placeat?"></div>
-				<div><img src="http://placehold.it/300/e1d400/000&text=image6" data-image-hd="http://placehold.it/600/e1d400/000&text=image6" alt="Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sequi suscipit quam, id aliquam totam aperiam quas rem debitis voluptatem pariatur, illo accusamus facilis eius ipsa! Reprehenderit libero, quas iste repudiandae distinctio, quos dignissimos."></div>
-					<div><img src="http://placehold.it/300/f1b702/fff&text=image1" data-image-hd="http://placehold.it/600/f1b702/fff&text=image1" alt="Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reprehenderit, quae, quam. Ut dolorum quia, unde dicta at harum porro officia obcaecati ipsam deserunt fugit dolore delectus quam, maxime nisi quo."></div>
-				<div><img src="http://placehold.it/300/d2f1b2/222&text=image2" data-image-hd="http://placehold.it/600/d2f1b2/222&text=image2" alt="Lorem ipsum dolor sit amet, consectetur adipisicing elit. Maxime accusamus officiis dignissimos doloribus consectetur harum eos sapiente optio aut minima."></div>
-				<div><img src="http://placehold.it/300/eee/000&text=image3" data-image-hd="http://placehold.it/600/eee/000&text=image3" alt="Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptates veritatis similique, amet, maiores soluta recusandae cupiditate, sed perspiciatis fugit minima, sunt dolores cum earum deserunt illo ipsum!"></div>
-				<div><img src="http://placehold.it/300/222/fff&text=image4" data-image-hd="http://placehold.it/600/222/fff&text=image4" alt="Lorem ipsum dolor sit amet, consectetur adipisicing elit. Itaque laudantium dignissimos tenetur eos unde quidem repellat officiis nemo laboriosam necessitatibus deleniti commodi quis aliquid est atque tempora aut, nihil!"></div>
+	<head>
+		<title>Homepage</title>
+		<link rel="stylesheet" type="text/css" href="css/style.css">
+		<script type="text/javascript" src="js/main.js"></script>
+	</head>
 	
+	<body>
+	
+		<div class="container-menu">
+			<h1>Filmaniac</h1>
+			<nav id="primary_nav_wrap">
+				<ul>
+  					<li class="current-menu-item"><a href="/">Home</a></li>
+  					<li><a href="/visti">Films Seen</a>
+  					<li class=""><a href="/search">Search</a></li>
+				</ul>
+			</nav>
+		</div>	
+	
+		<div class="container">
+			
+			<h2 class="text-center">Films To See</h2>
+		 	
+		 	<!-- Don't think i need this
+		 	<form class="lightbox-gallery" >
+          		<input id="checkbox-1" class="checkbox-custom" name="checkbox-1" type="checkbox" checked>
+          		<label for="checkbox-1" class="checkbox-custom-label">Film visti</label>
+    
+          		<input id="checkbox-2" class="checkbox-custom" name="checkbox-2" type="checkbox">
+          		<label for="checkbox-2" class="checkbox-custom-label">Film da vedere</label>
+      		</form>
+			-->
+			
+			<div class="lightbox-gallery">
+
+				<% for(var i=0; i<User.films_to_see.length; i++) { %>
+					<% if(User.films_to_see[i]) { %>
+						<div> <img src=<%=User.films_to_see[i].poster%> alt=<%User.films_to_see[i].title%> > 	</div>
+					<% }else{ %> <!-- THIS STATEMENT IS NEVER REACHED. DUH. -->
+						<div> Choose a film </div>
+					<% } %>
+				<% } %>
+
+			</div>
 		</div>
-	</div>
 
 
-<div class="text-center github-link">
-  
-  <a class="github-link" href="https://github.com/humbl3man/lightboxify" target="_blank"><i class="fa fa-github"></i> Github Source Code</a>
-  
-</div>
-<footer>
-	Esame 2018
-</footer>
-</body>
+		<div class="text-center github-link">
+  			<a class="github-link" href="https://github.com/humbl3man/lightboxify" target="_blank"><i class="fa fa-github"></i> Github Source Code</a>
+		</div>
+		
+		<footer>
+			Esame 2018
+		</footer>
+
+	</body>
 </html>

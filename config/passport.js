@@ -1,7 +1,7 @@
 
 var GoogleStrategy = require('passport-google-oauth').OAuth2Strategy; //"strategy" defined by passport middleware
 var auth = require('./auth.js'); //Has Client ID & Secret
-const User = require('./userModel');
+const User = require('./userModel'); //User model/schema
 
 module.exports = function(passport){ //Wrapping to run logic when it is called
 
@@ -23,30 +23,7 @@ module.exports = function(passport){ //Wrapping to run logic when it is called
 	},
 	//Function executed after callback (TODO)
 	function(req, accessToken, refreshToken, profile, done) {
-		/*if(!req.user){
-			//User is not logged in
-			users.get(profile.id).then((body) =>{
-				if(profile.statusCode === 200){
-					return done(null, body);
-				}
-				else{
-					users.insert({
-						_id : profile.id,
-						email : profile.emails[0].value,
-						access_token : accessToken,
-						film_visti : {},
-						film_da_vedere : {}
-					});
-				}	
-			});
-		}else{
-			//Users exists in db and is logged in
-			console.log(req.user);
-			var user = req.user;
-			user._id = profile.id;
-			user.email = profile.emails[0].value;
-			user.access_token = accessToken;
-		};*/
+	
 		if(!req.user){
 			User.findOne({
 				id : profile.id

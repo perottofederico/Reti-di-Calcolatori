@@ -7,15 +7,17 @@ const cookieParser = require('cookie-parser');
 const session = require('express-session'); //Creates a middleware for the session, with the given options.
 const passport = require('passport'); //Autentication middleware. Required for oAuth.
 const morgan = require('morgan'); //HTTP request logger middleware
-const mongoose = require('mongoose');
+const mongoose = require('mongoose'); //MongoDB
 const routes = require('./routes');
 const port = process.env.PORT || 3000; //Server port
 const dburl = require('./config/databaseurl.js');
 
-//creating global app object
-const app = express();
+const User = require(path.resolve(__dirname+'/config/userModel'));
 
+//creating global app object & connecting to db
+const app = express();
 mongoose.connect(dburl.url);
+
 
 //Express config defaults
 app.use(express.static(__dirname+'/public')); //Load static files in public folder
@@ -28,6 +30,7 @@ app.use(bodyParser.urlencoded({extended:true}));
 app.set('view engine', 'ejs');	//Render engine
 app.set('views', './views');
 
+
 //Passport setup
 app.use(session({secret : 'jfbeirvpjfnvpqernvpuebf',
 				resave : true,
@@ -37,9 +40,6 @@ app.use(passport.session());	//persistent sessions for login
 
 
 require('./routes/index.js')(app, passport); //Loads routes in the app & configures passport
-
-
-//TODO: DB implementation.
 
 
 //Catch 404 error and forward to error handler that prints stacktrace.
@@ -63,5 +63,14 @@ app.use(function(err, req, res, next){
 
 //Starting the server.
 app.listen(port, () =>{
+	/*User.findOne({
+		id: '105314313960907808446'
+	}, function(err, user){
+		if(err)
+			return done(err);
+		if(user){
+
+		}
+	});*/
 	console.log(`[SERVER.JS] Server listening on port ${port}`);
 });
