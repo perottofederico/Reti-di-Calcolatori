@@ -1,7 +1,8 @@
 module.exports = function(app, passport){ //Wrapping to run logic when it is called
-	var path= require('path');
+	var path = require('path');
 	var request = require('request');
 	const mongoose = require('mongoose');
+	const amqp = require('amqplib/callback_api');
 	const User = require(path.resolve(__dirname+'/../config/userModel')); //Loading User model/schema
 	const filmSchema = require(path.resolve(__dirname+'/../config/filmModel'));//Loading Film schema
 	const Film = mongoose.model('Film', filmSchema); //Defining film Model
@@ -44,6 +45,16 @@ module.exports = function(app, passport){ //Wrapping to run logic when it is cal
 		request.get(options, function(error, response, body){
 			if(!error && response.statusCode == 200){
 				film = JSON.parse(body);
+
+				amqp.connect('amqp://hhyulfhn:MhgdjSCJurUHEvV84_i0Hp6YqM2h2jip@hound.rmq.cloudamqp.com/hhyulfhn',
+				 function(err, conn){
+					conn.createChannel(function(err, ch){
+						var q = 'searches';
+						ch.assertQueue(q, {durable:false});
+						ch.sendToQueue(q, new Buffer("Time: "+ Date.now() + " - " + film.Title));
+					});
+				});
+
 				res.redirect('/film');
 			}
 		});
