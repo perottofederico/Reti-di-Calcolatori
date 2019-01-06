@@ -1,37 +1,47 @@
 <!DOCTYPE html>
 <html>
+	<head>
+		<title>Already Seen</title>
+		<link rel="stylesheet" type="text/css" href="css/style.css">
+		<script type="text/javascript" src="js/main.js"></script>
+	</head>
+	
+	<body>
+	
+		<div class="container-menu">
+			<h1>Filmaniac</h1>
+			<nav id="primary_nav_wrap">
+				<ul>
+  					<li class="current-menu-item"><a href="/">Home</a></li>
+  					<li><a href="/visti">Films Seen</a>
+  					<li class=""><a href="/search">Search</a></li>
+				</ul>
+			</nav>
+		</div>	
 
-<head>
-	<title>FILM VISTI</title>
-	<link rel="stylesheet" type="text/css" href="css/style.css">
-	<script type="text/javascript" src="js/main.js"></script>
-</head>
+		<div class="container">
+			<h2 class="text-center"> Films Already Seen </h2>
 
-<body>
-	<div class="container-menu">
-		<h1>TITOLO PROGETTO</h1>
-		<nav id="primary_nav_wrap">
-			<ul>
-  				<li class="current-menu-item"><a href="/">Home</a></li>
-  				<li><a href="/visti">Film Visti</a>
-  				<li class=""><a href="/search">Search</a></li>
-			</ul>
-		</nav>
-	</div>
+			<div class="lightbox-gallery">
 
-	<div class="container">
-		<div class="lightbox-gallery">
-
-			<% for(var i=0; i<User.films_seen.length; i++) { %>
-				<% if(User.films_seen[i]) { %>
-					<div> <img src=<%=User.films_seen[i].poster%> alt=<%User.films_seen[i].title%> > </div>
-				<% }else{ %> <!-- THIS STATEMENT IS NEVER REACHED. DUH. -->
-					<div> Choose a film </div>
+				<% for(var i=0; i<User.films_seen.length || i==8; i++) { %>
+					<% if(User.films_seen[i]) { %>
+						<div> <img src=<%=User.films_seen[i].poster%> alt=<%User.films_seen[i].title%> > </div>
+					<% }else{ %> <!-- THIS STATEMENT IS NEVER REACHED. DUH. -->
+						<div> Choose a film </div>
+					<% } %>
 				<% } %>
-			<% } %>
 
+			</div>
 		</div>
-	</div>
-</body>
 
+		<div class="text-center github-link">
+  			<a class="github-link" href="https://github.com/humbl3man/lightboxify" target="_blank"><i class="fa fa-github"></i> Github Source Code</a>
+		</div>
+			
+		<footer>
+			Esame 2018/2019
+		</footer>
+
+	</body>
 </html>

@@ -1,37 +1,45 @@
 <!DOCTYPE html>
 <html>
-<head>
-	<title>ESAME</title>
-	<link rel="stylesheet" type="text/css" href="css/style.css">
-	<script type="text/javascript" src="js/main.js"></script>
-</head>
-
-<body>
+	<head>
+		<title>Search</title>
+		<link rel="stylesheet" type="text/css" href="css/style.css">
+		<script type="text/javascript" src="js/main.js"></script>
+	</head>
+	
+	<body>
+	
 		<div class="container-menu">
-<h1>TITOLO PROGETTO</h1>
-<nav id="primary_nav_wrap">
-<ul>
-  <li class="current-menu-item"><a href="/">Home</a></li>
-  <li><a href="/visti">Film Visti</a>
-  <li class=""><a href="/search">Search</a></li>
-
-</ul>
-</nav>
-</div>
+			<h1>Filmaniac</h1>
+			<nav id="primary_nav_wrap">
+				<ul>
+  					<li class="current-menu-item"><a href="/">Home</a></li>
+  					<li><a href="/visti">Films Seen</a>
+  					<li class=""><a href="/search">Search</a></li>
+				</ul>
+			</nav>
+		</div>	
 
 	
-	<div class="container">
-		<div class="jumbotron text-center">
-			<h3> Cerca un Film </h3>
+		<div class="container">
+			<div class="jumbotron text-center">
+				<h3> Cerca un Film </h3>
 
-			<form action="/search" method="post">
-				<div class="form-group">
-					<input type="text" class="form control" name="name">
-				</div>
-				<button type="submit" class="btn btn-default btn-lg">Cerca</button>
-			</form>
-			<br>
+				<form action="/search" method="post">
+					<div class="form-group">
+						<input type="text" class="form control" name="name">
+					</div>
+					<button type="submit" class="btn btn-default btn-lg">Cerca</button>
+				</form>
+				<br>
+			</div>
 		</div>
-	</div>
-</body>
+		<div class="text-center github-link">
+  			<a class="github-link" href="https://github.com/humbl3man/lightboxify" target="_blank"><i class="fa fa-github"></i> Github Source Code</a>
+		</div>
+			
+		<footer>
+			Esame 2018/2019
+		</footer>
+
+	</body>
 </html>

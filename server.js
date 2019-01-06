@@ -63,14 +63,5 @@ app.use(function(err, req, res, next){
 
 //Starting the server.
 app.listen(port, () =>{
-	/*User.findOne({
-		id: '105314313960907808446'
-	}, function(err, user){
-		if(err)
-			return done(err);
-		if(user){
-
-		}
-	});*/
 	console.log(`[SERVER.JS] Server listening on port ${port}`);
 });

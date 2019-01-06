@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<title>Pagina Film</title>
+		<title>Search Result</title>
 		<link rel="stylesheet" type="text/css" href="css/style.css">
 		<script type="text/javascript" src="js/main.js"></script>
 	</head>
@@ -9,22 +9,33 @@
 	<body>
 	
 		<div class="container-menu">
-			<h1>TITOLO PROGETTO</h1>
+			<h1>Filmaniac</h1>
 			<nav id="primary_nav_wrap">
 				<ul>
   					<li class="current-menu-item"><a href="/">Home</a></li>
-	  				<li><a href="/visti">Film Visti</a>
+  					<li><a href="/visti">Films Seen</a>
   					<li class=""><a href="/search">Search</a></li>
 				</ul>
 			</nav>
-		</div>
-
+		</div>	
 
 		<div class="Lightbox-gallery">
-			<div>
-				<h1> <%=title%> </h1>
-				<img src= <%=poster%> >
-			</div>
+			<form method="POST">
+				<div>
+					<h1> <%=title%> </h1>
+					<img src= <%=poster%> >
+				</div>
+				<button type="submit" formaction="/visti" class="btn btn-default btn-lg">Add to seen</button>
+				<button type="submit" formaction="/addfilm" class="btn btn-default btn-lg">Add to Must Watch </button>
+			</form>
 		</div>
+		<div class="text-center github-link">
+  			<a class="github-link" href="https://github.com/humbl3man/lightboxify" target="_blank"><i class="fa fa-github"></i> Github Source Code</a>
+		</div>
+			
+		<footer>
+			Esame 2018/2019
+		</footer>
+
 	</body>
 </html>

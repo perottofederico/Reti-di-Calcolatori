@@ -14,23 +14,26 @@ module.exports = function(passport){ //Wrapping to run logic when it is called
 		done(null, id);
 	});
 
-	//GOOGLE LOGIN
+	//Google login strategy
 	passport.use(new GoogleStrategy({
 		clientID : auth.googleAuth.ClientID,
 		clientSecret : auth.googleAuth.ClientSecret,
 		callbackURL : auth.googleAuth.CallbackURL,
 		passReqToCallback: true
 	},
-	//Function executed after callback (TODO)
+	//Function executed after callback
 	function(req, accessToken, refreshToken, profile, done) {
-	
+		//Check if user is already logged in
 		if(!req.user){
+			//User is not logged in. Search db for user id
 			User.findOne({
 				id : profile.id
 			}, function(err, user){
 				if(err)
 					return done(err);
+
 				if(user){
+					//User exist in db but doesnt have a token (should never happen)
 					if(!user.token){
 						user.token = accessToken;
 						user.name = profile.displayName;
@@ -43,7 +46,9 @@ module.exports = function(passport){ //Wrapping to run logic when it is called
 						});
 					}
 					return done(null, user);
+
 				}else{
+					//User doesn't exist in db, therefore we create one
 					var newUser = new User();
 					newUser.id = profile.id;
 					newUser.token = accessToken;
@@ -58,7 +63,9 @@ module.exports = function(passport){ //Wrapping to run logic when it is called
 				}
 			});
 		}
+
 		else{
+			//User exists in db and is already logged in
 			var user = req.user;
 			user.id = profile.id;
 			user.token = accessToken;

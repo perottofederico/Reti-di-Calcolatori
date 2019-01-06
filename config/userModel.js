@@ -11,13 +11,3 @@ const userSchema = mongoose.Schema({
 });
 
 module.exports = mongoose.model('User', userSchema);
-
-
-/*exports.addFilm = function(req, res, next){
-	var film = {
-		title : req.body.title,
-		poster : req.body.poster
-	}
-
-	User.findOneAndUpdate({id : profile.id, });
-}*/

@@ -32,10 +32,10 @@
           		<label for="checkbox-2" class="checkbox-custom-label">Film da vedere</label>
       		</form>
 			-->
-			
+
 			<div class="lightbox-gallery">
 
-				<% for(var i=0; i<User.films_to_see.length; i++) { %>
+				<% for(var i=0; i<User.films_to_see.length || i==8; i++) { %>
 					<% if(User.films_to_see[i]) { %>
 						<div> <img src=<%=User.films_to_see[i].poster%> alt=<%User.films_to_see[i].title%> > 	</div>
 					<% }else{ %> <!-- THIS STATEMENT IS NEVER REACHED. DUH. -->
@@ -52,7 +52,7 @@
 		</div>
 		
 		<footer>
-			Esame 2018
+			Esame 2018/2019
 		</footer>
 
 	</body>
