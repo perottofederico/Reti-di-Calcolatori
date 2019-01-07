@@ -1,18 +1,17 @@
 
 //Listing all requirements;
-const express = require('express'); //Webapp framework (kinda)
-const path = require('path'); //Required to work with directories
-const bodyParser = require('body-parser'); //Middleware to parse the req.body property, before handlers.
-const cookieParser = require('cookie-parser');
-const session = require('express-session'); //Creates a middleware for the session, with the given options.
-const passport = require('passport'); //Autentication middleware. Required for oAuth.
-const morgan = require('morgan'); //HTTP request logger middleware
-const mongoose = require('mongoose'); //MongoDB
-const routes = require('./routes');
-const port = process.env.PORT || 3000; //Server port
-const dburl = require('./config/databaseurl.js');
-
-const User = require(path.resolve(__dirname+'/config/userModel'));
+const express 		= require('express'); //Webapp framework (kinda)
+const path 			= require('path'); //Required to work with directories
+const bodyParser 	= require('body-parser'); //Middleware to parse the req.body property, before handlers.
+const cookieParser 	= require('cookie-parser');
+const session 		= require('express-session'); //Creates a middleware for the session, with the given options.
+const passport 		= require('passport'); //Autentication middleware. Required for oAuth.
+const morgan 		= require('morgan'); //HTTP request logger middleware
+const mongoose 		= require('mongoose'); //MongoDB
+const routes 		= require('./routes');
+const port 			= process.env.PORT || 3000; //Server port
+const dburl 		= require('./config/databaseurl.js');
+const User 			= require(path.resolve(__dirname+'/config/userModel'));
 
 //creating global app object & connecting to db
 const app = express();

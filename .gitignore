@@ -1,2 +1,3 @@
 #Ignore auth.js, which contains client id and secret id.
 config/auth.js
+package.json

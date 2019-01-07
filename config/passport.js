@@ -1,6 +1,6 @@
 
-var GoogleStrategy = require('passport-google-oauth').OAuth2Strategy; //"strategy" defined by passport middleware
-var auth = require('./auth.js'); //Has Client ID & Secret
+const GoogleStrategy = require('passport-google-oauth').OAuth2Strategy; //"strategy" defined by passport middleware
+const auth = require('./auth.js'); //Has Client ID & Secret
 const User = require('./userModel'); //User model/schema
 
 module.exports = function(passport){ //Wrapping to run logic when it is called
@@ -49,7 +49,7 @@ module.exports = function(passport){ //Wrapping to run logic when it is called
 
 				}else{
 					//User doesn't exist in db, therefore we create one
-					var newUser = new User();
+					let newUser = new User();
 					newUser.id = profile.id;
 					newUser.token = accessToken;
 					newUser.name = profile.displayName;
@@ -66,7 +66,7 @@ module.exports = function(passport){ //Wrapping to run logic when it is called
 
 		else{
 			//User exists in db and is already logged in
-			var user = req.user;
+			let user = req.user;
 			user.id = profile.id;
 			user.token = accessToken;
 			user.name = profile.displayName;

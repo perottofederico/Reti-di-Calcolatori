@@ -12,9 +12,14 @@
 			<h1>Filmaniac</h1>
 			<nav id="primary_nav_wrap">
 				<ul>
-  					<li class="current-menu-item"><a href="/">Home</a></li>
+  					<li><a href="/">Films to See</a></li>
   					<li><a href="/visti">Films Seen</a>
-  					<li class=""><a href="/search">Search</a></li>
+  					<li><a href="/search">Search</a></li>
+				</ul>
+				<ul class="logOut">
+					<li>
+						<a href="/logout">Log out</a>
+					</li>
 				</ul>
 			</nav>
 		</div>	
@@ -22,28 +27,15 @@
 		<div class="container">
 			
 			<h2 class="text-center">Films To See</h2>
-		 	
-		 	<!-- Don't think i need this
-		 	<form class="lightbox-gallery" >
-          		<input id="checkbox-1" class="checkbox-custom" name="checkbox-1" type="checkbox" checked>
-          		<label for="checkbox-1" class="checkbox-custom-label">Film visti</label>
-    
-          		<input id="checkbox-2" class="checkbox-custom" name="checkbox-2" type="checkbox">
-          		<label for="checkbox-2" class="checkbox-custom-label">Film da vedere</label>
-      		</form>
-			-->
 
 			<div class="lightbox-gallery">
-
-				<% for(var i=0; i<User.films_to_see.length || i==8; i++) { %>
+				<% for(var i=0; i<User.films_to_see.length || i==10; i++) { %>
 					<% if(User.films_to_see[i]) { %>
 						<div> <img src=<%=User.films_to_see[i].poster%> alt=<%User.films_to_see[i].title%> > 	</div>
-					<% }else{ %> <!-- THIS STATEMENT IS NEVER REACHED. DUH. -->
-						<div> Choose a film </div>
 					<% } %>
 				<% } %>
-
 			</div>
+
 		</div>
 
 

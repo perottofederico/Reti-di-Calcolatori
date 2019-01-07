@@ -12,23 +12,31 @@
 			<h1>Filmaniac</h1>
 			<nav id="primary_nav_wrap">
 				<ul>
-  					<li class="current-menu-item"><a href="/">Home</a></li>
+  					<li><a href="/">Films to See</a></li>
   					<li><a href="/visti">Films Seen</a>
-  					<li class=""><a href="/search">Search</a></li>
+  					<li><a href="/search">Search</a></li>
+				</ul>
+				<ul class="logOut">
+					<li>
+						<a href="/logout">Log out</a>
+					</li>
 				</ul>
 			</nav>
 		</div>	
 
 		<div class="Lightbox-gallery">
+
 			<form method="POST">
 				<div>
 					<h1> <%=title%> </h1>
 					<img src= <%=poster%> >
 				</div>
-				<button type="submit" formaction="/visti" class="btn btn-default btn-lg">Add to seen</button>
-				<button type="submit" formaction="/addfilm" class="btn btn-default btn-lg">Add to Must Watch </button>
+				<button type="submit" formaction="/visti" class="btn btn-default btn-lg">Add to Films Seen</button>
+				<button type="submit" formaction="/addfilm" class="btn btn-default btn-lg">Add to Films to See </button>
 			</form>
+
 		</div>
+		
 		<div class="text-center github-link">
   			<a class="github-link" href="https://github.com/humbl3man/lightboxify" target="_blank"><i class="fa fa-github"></i> Github Source Code</a>
 		</div>

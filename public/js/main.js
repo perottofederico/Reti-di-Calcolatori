@@ -1,5 +1,6 @@
 // Create a lightbox
-(function() {
+$(document).ready(
+function() {
   var $lightbox = $("<div class='lightbox'></div>");
   var $img = $("<img>");
   var $caption = $("<p class='caption'></p>");

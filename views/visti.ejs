@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<title>Already Seen</title>
+		<title>Films Seen</title>
 		<link rel="stylesheet" type="text/css" href="css/style.css">
 		<script type="text/javascript" src="js/main.js"></script>
 	</head>
@@ -12,27 +12,29 @@
 			<h1>Filmaniac</h1>
 			<nav id="primary_nav_wrap">
 				<ul>
-  					<li class="current-menu-item"><a href="/">Home</a></li>
+  					<li><a href="/">Films to See</a></li>
   					<li><a href="/visti">Films Seen</a>
-  					<li class=""><a href="/search">Search</a></li>
+  					<li><a href="/search">Search</a></li>
+				</ul>
+				<ul class="logOut">
+					<li>
+						<a href="/logout">Log out</a>
+					</li>
 				</ul>
 			</nav>
 		</div>	
 
 		<div class="container">
-			<h2 class="text-center"> Films Already Seen </h2>
+			<h2 class="text-center"> Films Seen </h2>
 
 			<div class="lightbox-gallery">
-
-				<% for(var i=0; i<User.films_seen.length || i==8; i++) { %>
+				<% for(var i=0; i<User.films_seen.length || i==10; i++) { %>
 					<% if(User.films_seen[i]) { %>
 						<div> <img src=<%=User.films_seen[i].poster%> alt=<%User.films_seen[i].title%> > </div>
-					<% }else{ %> <!-- THIS STATEMENT IS NEVER REACHED. DUH. -->
-						<div> Choose a film </div>
 					<% } %>
 				<% } %>
-
 			</div>
+
 		</div>
 
 		<div class="text-center github-link">

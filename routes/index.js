@@ -1,13 +1,13 @@
 module.exports = function(app, passport){ //Wrapping to run logic when it is called
-	var path = require('path');
-	var request = require('request');
+	const path = require('path');
+	const request = require('request');
 	const mongoose = require('mongoose');
 	const amqp = require('amqplib/callback_api');
 	const User = require(path.resolve(__dirname+'/../config/userModel')); //Loading User model/schema
 	const filmSchema = require(path.resolve(__dirname+'/../config/filmModel'));//Loading Film schema
 	const Film = mongoose.model('Film', filmSchema); //Defining film Model
 	
-	//Just a function to log time
+	//Just a function to log time in console
 	app.use(function timeLog(req, res, next){
 		console.log('Time: ', Date.now());
 		next();
@@ -34,28 +34,33 @@ module.exports = function(app, passport){ //Wrapping to run logic when it is cal
 
 	
 
-	var film; //Variable including movie info
+	let film; //Variable including movie info
+
 	//Search page
 	app.get('/search', isLoggedIn, function(req, res){
 		res.render(path.resolve(__dirname+'/../views/search.ejs'));
 	});
 	//POST Request for film title to oMDB
 	app.post('/search', isLoggedIn, function(req, res){
-		var options = {url: 'http://www.omdbapi.com/?apikey=2fab0a6a&t='+ req.body.name};
+		let options = {url: 'http://www.omdbapi.com/?apikey=2fab0a6a&t='+ req.body.name};
 		request.get(options, function(error, response, body){
-			if(!error && response.statusCode == 200){
-				film = JSON.parse(body);
+			film = JSON.parse(body);
+			if(film.Response!=='False' && response.statusCode == 200){
 
+				//Log film search to broker on cloudamqp (AMQP Producer)
 				amqp.connect('amqp://hhyulfhn:MhgdjSCJurUHEvV84_i0Hp6YqM2h2jip@hound.rmq.cloudamqp.com/hhyulfhn',
 				 function(err, conn){
 					conn.createChannel(function(err, ch){
-						var q = 'searches';
-						ch.assertQueue(q, {durable:false});
+						let q = 'searches';
+						ch.assertQueue(q, {durable:false}); //Don't care if broker dies/restarts
 						ch.sendToQueue(q, new Buffer("Time: "+ Date.now() + " - " + film.Title));
 					});
 				});
-
 				res.redirect('/film');
+			}
+			else{
+				console.log("Film not found, redirecting to search page");
+				res.redirect('/search');
 			}
 		});
 	});
@@ -85,6 +90,7 @@ module.exports = function(app, passport){ //Wrapping to run logic when it is cal
 		let new_film = new Film();
 		new_film.title = film.Title;
 		new_film.poster = film.Poster;
+
 		User.findOne({id : req.user, films_seen : new_film}, function(err, result){
 			//Search in films seen array
 			if(err)
@@ -101,20 +107,20 @@ module.exports = function(app, passport){ //Wrapping to run logic when it is cal
 							if(err)
 								console.log(err);
 							else
-								console.log("[THIS IS THE RESULT OF FINDONEANDUPDATE]"+film);
+								console.log("[Film inserted in films seen]");
 						});
 						res.redirect('/visti');
 					}
 					else{
 						//film found in films to see array
-						console.log("[FILM TROVATO NELLA LISTA FILM DA VEDERE]");
-						res.redirect('/visti');	
+						console.log("[Film found in films to see array, redirecting to homepage]");
+						res.redirect('/');	
 					}
 				});
 			}
 			else{
 				//Film found in films seen array
-				console.log("Film found, therefore list was not updated")
+				console.log("[Film found in films seen array, redirecting to /visti]")
 				res.redirect('/visti');
 			}
 		});
@@ -144,13 +150,13 @@ module.exports = function(app, passport){ //Wrapping to run logic when it is cal
 							if(err)
 								console.log(err);
 							else
-								console.log("[THIS IS THE RESULT OF FINDONEANDUPDATE]"+film);
+								console.log("[Film inserted in films to see array]");
 						});
 						res.redirect('/');
 					}
 					else{
-						//Film foundo in films seen array
-						console.log("[FILM TROVATO NELLA LISTA DI FILM VISTI");
+						//Film found in films seen array
+						console.log("[Film found in films seen array, redirecting to /visti]");
 						res.redirect('./visti');
 					}
 				});
@@ -158,7 +164,7 @@ module.exports = function(app, passport){ //Wrapping to run logic when it is cal
 
 			else{
 				//Film already in films to see array
-				console.log("Film found, therefore list was not updated")
+				console.log("[Film found in films to see array, redirecting to /]")
 				res.redirect('/');
 			}
 		});
@@ -178,7 +184,7 @@ module.exports = function(app, passport){ //Wrapping to run logic when it is cal
 
 	app.get('/logout', isLoggedIn, function(req,res){
 		req.logout();
-		res.redirect('/');
+		res.redirect('/login');
 	});
 }
 

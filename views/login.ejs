@@ -4,6 +4,11 @@
 		<title>Login</title>
 		<link rel="stylesheet" type="text/css" href="css/style.css">
 		<script type="text/javascript" src="js/main.js"></script>
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/css/materialize.min.css">
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+		<script src="https://apis.google.com/js/platform.js" async defer></script>
+		<meta name="google-signin-client_id" content="127288589065-9ft2e6kr79iblq1k0sahbddm2mc4pef6.apps.googleusercontent.com">
+
 	</head>
 	
 	<body>
@@ -12,31 +17,28 @@
 			<h1>Filmaniac</h1>
 			<nav id="primary_nav_wrap">
 				<ul>
-  					<li class="current-menu-item"><a href="/">Home</a></li>
+  					<li><a href="/">Films to See</a></li>
   					<li><a href="/visti">Films Seen</a>
-  					<li class=""><a href="/search">Search</a></li>
+  					<li><a href="/search">Search</a></li>
 				</ul>
 			</nav>
 		</div>	
-
-		<div>
-
-			<a href="/auth/google">Sign In with Google</a>
-
-		<!--
-		<hr>
-		<p>Non hai un Account? <a href="/signup">Signup</a></p>
-		<p>Oppure torna alla <a href="/">Home</a>.</p>
-		-->
-		
-		<div class="text-center github-link">
-  			<a class="github-link" href="https://github.com/humbl3man/lightboxify" target="_blank"><i class="fa fa-github"></i> Github Source Code</a>
+			<div class="desc" style="text-align: center; font-size: 30px;">
+				Filmaniac is a simple webapp to help you keep track of films you have seen and that you want to see!
+			</div>
+		<div class="cn" style="height:200px; text-align: center">
+			<div class="btn white darken-4 col s10 m4" style="position:absolute; top:50%; left:50%;  transform: translate(-50%,-50%);">
+     			<a href="/auth/google" style="text-transform:none">
+         			<div class="left">
+            	 		<img width="20px" alt="Google &quot;G&quot; Logo" src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Google_%22G%22_Logo.svg/512px-Google_%22G%22_Logo.svg.png"/>
+        			</div>
+         			Login with Google
+     			</a>
+			</div>
 		</div>
-			
 		<footer>
 			Esame 2018/2019
 		</footer>
-
 
 	</body>
 </html>
