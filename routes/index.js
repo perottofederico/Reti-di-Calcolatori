@@ -102,7 +102,8 @@ module.exports = function(app, passport){ //Wrapping to run logic when it is cal
 						console.log(err);
 					if (result == null){
 						//if not in films to see, update films seen
-						User.findOneAndUpdate({id:req.user}, {$push: {films_seen: new_film}},
+						User.findOneAndUpdate({id:req.user}, 
+							{$push: {films_seen: {$each: [new_film], $position: 0}}},
 						function(err, film){ //apparently callback is required to work properly
 							if(err)
 								console.log(err);
@@ -145,7 +146,8 @@ module.exports = function(app, passport){ //Wrapping to run logic when it is cal
 					}
 					if(result == null){
 						//If not in films seen, update films to see array
-						User.findOneAndUpdate({id:req.user}, {$push: {films_to_see: new_film}},
+						User.findOneAndUpdate({id:req.user}, 
+							{$push: {films_to_see: {$each: [new_film], $position: 0}}},
 						function(err, film){
 							if(err)
 								console.log(err);

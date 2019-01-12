@@ -8,7 +8,7 @@
 	
 	<body>
 	
-		<div class="container-menu">
+		<div class="container-menu" style="background-color: teal">
 			<h1>Filmaniac</h1>
 			<nav id="primary_nav_wrap">
 				<ul>
@@ -28,11 +28,15 @@
 
 			<form method="POST">
 				<div>
-					<h1> <%=title%> </h1>
-					<img src= <%=poster%> >
+					<h1 style="text-align: center"> <%=title%> </h1>
+					<div style="text-align: center;">
+						<img src= <%=poster%> >
+					</div>
 				</div>
-				<button type="submit" formaction="/visti" class="btn btn-default btn-lg">Add to Films Seen</button>
-				<button type="submit" formaction="/addfilm" class="btn btn-default btn-lg">Add to Films to See </button>
+				<div style="text-align: center; padding-top: 40px;">
+					<button type="submit" formaction="/visti" class="btn btn-default btn-lg">Add to Films Seen</button>
+					<button type="submit" formaction="/addfilm" class="btn btn-default btn-lg">Add to Films to See </button>
+				</div>
 			</form>
 
 		</div>
@@ -41,7 +45,7 @@
   			<a class="github-link" href="https://github.com/humbl3man/lightboxify" target="_blank"><i class="fa fa-github"></i> Github Source Code</a>
 		</div>
 			
-		<footer>
+		<footer style="background-color: teal">
 			Esame 2018/2019
 		</footer>
 
